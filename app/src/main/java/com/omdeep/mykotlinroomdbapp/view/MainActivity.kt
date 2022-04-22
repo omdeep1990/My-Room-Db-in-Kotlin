@@ -3,12 +3,11 @@ package com.omdeep.mykotlinroomdbapp.view
 import android.app.Dialog
 import android.os.Bundle
 import android.view.ContextMenu
-import android.view.ContextMenu.ContextMenuInfo
 import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
+import android.widget.AdapterView
 import android.widget.Toast
-import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -28,7 +27,8 @@ import com.omdeep.mykotlinroomdbapp.viewModel.MyViewModel
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var myViewModel: MyViewModel
-    lateinit var user : User
+    private lateinit var user : User
+    private val userList: MutableList<User> = ArrayList()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +36,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-
+        registerForContextMenu(binding.recyclerView)
+//        binding.recyclerView.setOnItemLongClickListener(this)
+//        binding!!.recyclerView. = this
 
         //TODO: Initializing all the MVVM concepts used here
         val dao = UserDatabase.getInstance(this).dao
@@ -46,6 +48,7 @@ class MainActivity : AppCompatActivity() {
 
 
         displayUsersList()
+
 
         binding.floatingBtn.setOnClickListener {
             //TODO: New way of creating dialog box in Kotlin language
@@ -65,6 +68,16 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+
+//    override fun onItemLongClick(
+//        parent: AdapterView<*>?,
+//        view: View,
+//        position: Int,
+//        id: Long
+//    ): Boolean {
+//        user = userList[position]
+//        return false
+//    }
 
     override fun onCreateContextMenu(
         menu: ContextMenu?,
