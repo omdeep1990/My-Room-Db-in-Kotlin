@@ -28,6 +28,11 @@ class MyViewModel(private val userRepository: UserRepository) : ViewModel() {
         clearAllOrDelete.value = "CLEAR ALL"
     }
 
+    fun UpdateOnClick() {
+        if (isUpdateOrDelete) {
+
+        }
+    }
     fun saveOrUpdateClick() {
         //TODO: Here first 'firstName' is the column name and second 'firstName is the Mutable Live Data
         if (isUpdateOrDelete) {
@@ -59,9 +64,22 @@ class MyViewModel(private val userRepository: UserRepository) : ViewModel() {
         isUpdateOrDelete = true
         userToUpdateOrDelete = user
 
-//        saveOrUpdate.value = "Upda"
+        saveOrUpdate.value = "Update"
+        clearAllOrDelete.value = "Delete"
     }
 
+
+    fun clearAllOrDelete() {
+        if (isUpdateOrDelete) {
+            delete(userToUpdateOrDelete)
+
+            saveOrUpdate.value = "Save"
+            clearAllOrDelete.value = "Clear All"
+            setNullValue()
+        } else {
+            clearAll()
+        }
+    }
     fun insert(user: User) {
         viewModelScope.launch {
             userRepository.insert(user)
@@ -97,4 +115,5 @@ class MyViewModel(private val userRepository: UserRepository) : ViewModel() {
         lastName.value = null
         mobileNo.value = null
     }
+
 }

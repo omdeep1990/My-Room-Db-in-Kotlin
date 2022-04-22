@@ -10,7 +10,7 @@
     <com.google.android.material.card.MaterialCardView
         app:cardCornerRadius="30dp"
         app:cardElevation="40dp"
-        app:cardBackgroundColor="@color/purple_200"
+        app:cardBackgroundColor="@color/card_color"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

@@ -1,14 +1,35 @@
 package com.omdeep.mykotlinroomdbapp.adapter
 
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.omdeep.mykotlinroomdbapp.databinding.InsertLayoutBinding
+import com.omdeep.mykotlinroomdbapp.databinding.DisplayLayoutBinding
 import com.omdeep.mykotlinroomdbapp.db.User
 
-class MyRecyclerViewAdapter {
+class MyRecyclerViewAdapter(private val userList: List<User>, var selectedItem: (User) -> Unit) : RecyclerView.Adapter<MyRecyclerViewAdapter.MyViewHolder>() {
 
-    class MyViewHolder(val binding : InsertLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
+    class MyViewHolder(val binding : DisplayLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(user: User, selectedItem: (User) -> Unit) {
-//            binding.
+            binding.yourName.text = user.firstName+" "+user.lName
+            binding.mobileNumber.text = user.mobileNo
+            binding.rootItem.setOnClickListener {
+                selectedItem(user)
+            }
+
         }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding = DisplayLayoutBinding.inflate(layoutInflater, parent, false)
+        return MyViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        holder.bind(userList[position], selectedItem)
+    }
+
+    override fun getItemCount(): Int {
+        return userList.size
     }
 }

@@ -4,8 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Omdeep Singh/AndroidStudioProjects/MyKotlinRoomDbApp/app/src/main/res/layout/activity_insert.xml" value="0.2" />
-        <entry key="..\:/Users/Omdeep Singh/AndroidStudioProjects/MyKotlinRoomDbApp/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/Omdeep Singh/AndroidStudioProjects/MyKotlinRoomDbApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Omdeep Singh/AndroidStudioProjects/MyKotlinRoomDbApp/app/src/main/res/layout/display_layout.xml" value="0.33" />
         <entry key="..\:/Users/Omdeep Singh/AndroidStudioProjects/MyKotlinRoomDbApp/app/src/main/res/layout/insert_layout.xml" value="0.1" />
+        <entry key="..\:/Users/Omdeep Singh/AndroidStudioProjects/MyKotlinRoomDbApp/app/src/main/res/menu/profile_context_menu.xml" value="0.2" />
       </map>
     </option>
   </component>
